@@ -1,6 +1,6 @@
 
 .menu__side{
-    width: 280px;
+    width: 80px;
     height: 100%;
     background: #1783db;
     position: fixed;
@@ -11,7 +11,7 @@
     overflow: hidden;
     overflow-y: scroll;
     /*border-right: 20px solid #e490fd;*/
-    /*transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);*/
+    transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
     z-index: 900;
 }
 
@@ -50,7 +50,7 @@
     display: block;
     position: relative;
     text-decoration: none;
-    /*transition: color 300ms;*/
+    transition: color 300ms;
 }
 
 .options__menu a:hover{
@@ -75,11 +75,24 @@
     cursor: pointer;
     margin: 0;
     padding: 0;
+    white-space: nowrap;
 }
 
 a.selected{
     color: #fff;
 }
 
+.selected:before{
+    content: '';
+    width: 3px;
+    height: 80%;
+    background: white;
+    position: absolute;
+    top: 10%;
+    left: -30px;
+}
 
-
+/*Clases para usar al mover el Side Menu*/
+.menu__side_move {
+    width: 250px;
+}

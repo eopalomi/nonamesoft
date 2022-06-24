@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  toogleMenu: boolean = false;
+
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private renderer: Renderer2
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  openCloseSideMenu(){
+    this.toogleMenu = !this.toogleMenu;
+
+    if (this.toogleMenu){
+      this.renderer.addClass(this.document.body,'body_move');
+      this.renderer.addClass(this.document.getElementById('menu_side'),'menu__side_move');
+    } else {
+      this.renderer.removeClass(this.document.body,'body_move');
+      this.renderer.removeClass(this.document.getElementById('menu_side'),'menu__side_move');
+    }
+
+    console.log("art")
   }
 
 }
