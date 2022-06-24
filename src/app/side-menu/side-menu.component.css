@@ -1,6 +1,6 @@
 
 .menu__side{
-    width: 80px;
+    width: 0px;
     height: 100%;
     background: #1783db;
     position: fixed;
@@ -94,5 +94,5 @@ a.selected{
 
 /*Clases para usar al mover el Side Menu*/
 .menu__side_move {
-    width: 250px;
+    width: 240px;
 }
