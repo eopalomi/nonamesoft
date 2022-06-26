@@ -5,7 +5,7 @@
         <h4>NoNameSoft</h4>
     </div>
 
-    <div class="options__menu" id="menu_side">
+    <!-- <div class="options__menu" id="menu_side">
         <a href="#" class="selected">
             <div class="option">
                 <i class="fas fa-home" title="Inicio"></i>
@@ -42,6 +42,62 @@
                 <h4>Contacto</h4>
             </div>
         </a>
-    </div>
+    </div> -->
 
+    <!-- <div class="nav"> -->
+        <ul class="nav__list">
+            <li class="list__item">
+                <div class="list__button">
+                    <i class="fa-solid fa-house list__img" ></i>
+                    <a href="#" class="nav__link">Inicio</a>
+                </div>
+            </li>
+
+            <li class="list__item">
+                <div #buttonOptions (click)="toogleMenu($event, 'r001')" class="list__button">
+                    <i class="fa-solid fa-house list__img" ></i>
+                    <a href="#" class="nav__link">Opciones</a>
+                    <i class="fa-solid fa-chevron-right list__arrow" [ngClass]="{'rotate_arrow':  idMenuActive == 'r001'}"></i>
+                </div>
+
+                <ul class="list__show">
+                    <li>
+                        <a href="" class="nav__link nav__link--inside">menu adentro</a>
+                    </li>
+                    <li>
+                        <a href="" class="nav__link nav__link--inside">menu adentro</a>
+                    </li>
+                    <li>
+                        <a href="" class=" nav__link nav__link--inside">menu adentro</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="list__item">
+                <div class="list__button">
+                    <i class="fa-solid fa-house list__img" ></i>
+                    <a href="#" class="nav__link">Estadisticas</a>
+                </div>
+            </li>
+            <li class="list__item">
+                <div #buttonOptions class="list__button" (click)="toogleMenu($event, 'r002')">
+                    <i class="fa-solid fa-house list__img" ></i>
+                    <a href="#" class="nav__link">Reportes Nuevos</a>
+                    <i class="fa-solid fa-chevron-right list__arrow" [ngClass]="{'rotate_arrow': idMenuActive == 'r002'}"></i>
+                </div>
+
+                <ul class="list__show">
+                    <li>
+                        <a href="" class="nav__link nav__link--inside">menu adentro</a>
+                    </li>
+                    <li>
+                        <a href="" class="nav__link nav__link--inside">menu adentro</a>
+                    </li>
+                    <li>
+                        <a href="" class="nav__link nav__link--inside">menu adentro</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    <!-- </div> -->
 </div>
