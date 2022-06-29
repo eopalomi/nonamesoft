@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, Renderer2, ViewChildren } from '@angular/core';
 
 type MenuNav = {
   idNavMenu: number,
@@ -19,8 +19,9 @@ type MenuNav = {
   styleUrls: ['./side-menu.component.css']
 })
 export class SideMenuComponent implements OnInit {
-
-  idMenuActive : number = 0;
+  @ViewChildren('selectSubNavMenu') selectSubNavMenu !: QueryList<ElementRef>;
+  idMenuActive?: number;
+  idMenusOpened: number[] = [];
 
   navMenu: MenuNav[] = [
     {
@@ -33,12 +34,12 @@ export class SideMenuComponent implements OnInit {
       idNavMenu: 2,
       nameSubNavMenu: 'Opciones',
       typeNavMenu: 'LI',
-      icoNavMenu: 'fa-solid fa-house',
+      icoNavMenu: 'fa-regular fa-circle-check',
       subNavmenu: [
-        { idSubNavMenu: 1, nameSubNavMenu: 'Opcion 10', icoSubNavMenu: 'fa-solid fa-house' },
-        { idSubNavMenu: 2, nameSubNavMenu: 'Opcion 20', icoSubNavMenu: 'fa-solid fa-house' },
-        { idSubNavMenu: 3, nameSubNavMenu: 'Opcion 30', icoSubNavMenu: 'fa-solid fa-chart-line' },
-        { idSubNavMenu: 4, nameSubNavMenu: 'Opcion 40', icoSubNavMenu: 'fa-solid fa-house' }
+        { idSubNavMenu: 1, nameSubNavMenu: 'Aplicar Pagos Masivo', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 2, nameSubNavMenu: 'Reporte Liquidacion', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 3, nameSubNavMenu: 'Pagos No Tradicionales', icoSubNavMenu: 'fa-solid fa-chart-line' },
+        { idSubNavMenu: 4, nameSubNavMenu: 'Reporte Niubiz - Tunki', icoSubNavMenu: 'fa-solid fa-house' }
       ]!
     },
     {
@@ -51,51 +52,67 @@ export class SideMenuComponent implements OnInit {
       idNavMenu: 4,
       nameSubNavMenu: 'Reportes',
       typeNavMenu: 'LI',
-      icoNavMenu: 'fa-solid fa-house',
+      icoNavMenu: 'fa-regular fa-file-lines',
       subNavmenu: [
-        { idSubNavMenu: 5, nameSubNavMenu: 'Opcion 100', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 5, nameSubNavMenu: 'Simulador de Cronogramas Pagos', icoSubNavMenu: 'fa-solid fa-house' },
         { idSubNavMenu: 6, nameSubNavMenu: 'Opcion 200', icoSubNavMenu: 'fa-solid fa-house' },
         { idSubNavMenu: 7, nameSubNavMenu: 'Opcion 300', icoSubNavMenu: 'fa-solid fa-house' },
-        { idSubNavMenu: 8, nameSubNavMenu: 'Opcion 400', icoSubNavMenu: 'fa-solid fa-house' }
+        { idSubNavMenu: 8, nameSubNavMenu: 'Opcion 400', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 9, nameSubNavMenu: 'Opcion 500', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 10, nameSubNavMenu: 'Opcion 600', icoSubNavMenu: 'fa-solid fa-house' }
       ]!
     },
     {
       idNavMenu: 5,
       nameSubNavMenu: 'Registrar Menu',
       typeNavMenu: 'UN',
-      icoNavMenu: 'fa-solid fa-house'
+      icoNavMenu: 'fa-regular fa-bell'
+    },
+    {
+      idNavMenu: 5,
+      nameSubNavMenu: 'Nuevo Clientes',
+      typeNavMenu: 'LI',
+      icoNavMenu: 'fa-regular fa-envelope',
+      subNavmenu: [
+        { idSubNavMenu: 5, nameSubNavMenu: 'Simulador de Cronogramas Pagos', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 6, nameSubNavMenu: 'Opcion 200', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 7, nameSubNavMenu: 'Opcion 300', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 8, nameSubNavMenu: 'Opcion 400', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 9, nameSubNavMenu: 'Opcion 500', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 10, nameSubNavMenu: 'Opcion 600', icoSubNavMenu: 'fa-solid fa-house' }
+      ]!
     }
   ];
 
-  constructor() { }
+  constructor(private renderer: Renderer2) { }
 
   ngOnInit(): void {
   }
 
-  toogleMenu($event: any, id_menu_Active: number) {
-    console.log("parent:\n", $event.target.parentNode);
+  toogleMenu(id_menu_Active: number) {
+    let allMenu = this.selectSubNavMenu.toArray(); //Capturamos todos los Submenus
 
     if (this.idMenuActive == id_menu_Active) {
-      this.idMenuActive = -99;
+      this.idMenuActive = undefined; // Borramos el ID Activo para que le sea retirada la clase rotacion flecha
     } else {
-      this.idMenuActive = id_menu_Active;
+      this.idMenuActive = id_menu_Active; // Asignamos el ID como Activo
     };
     
-    let html = $event.target.parentNode.nextSibling == null ? $event.target : $event.target.parentNode.nextSibling;
-    
-    let height = 0;
+    allMenu.forEach((rs: ElementRef) => {
+      let idMenu    = parseFloat(rs.nativeElement.id);      // ID del Menu
+      let heightMax = rs.nativeElement.scrollHeight + 'px'; // Alto Minimo para mostrar el HTML
 
-    if (html.clientHeight == "0") {
-      height = html.scrollHeight;
-    };
+      if (idMenu == id_menu_Active) {
 
-    Array.from(document.querySelectorAll("th .sorting")).forEach(function (ele) {
-      ele.classList.remove("active");
+        if (this.idMenusOpened.includes(idMenu)) { // Existe ID Menu Abierto
+          this.renderer.setStyle(rs.nativeElement, 'height', '0px'); // Ocultamos Menu
+          this.idMenusOpened = this.idMenusOpened.filter(x => x != idMenu); // Removemos ID Menu
+        } else {
+          this.renderer.setStyle(rs.nativeElement, 'height', heightMax); // Mostramos Menu
+          this.idMenusOpened.push(idMenu); // Añadimos ID Menu
+        }
+      }
     });
-    
-    html.style.height = `${height}px`;
-
-    console.log("Parents parent sibling:\n", html.clientHeight, '\n', html, '\n', $event.target);
   }
 
 

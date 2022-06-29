@@ -5,9 +5,9 @@
         <h4>NoNameSoft</h4>
     </div>
     
-    <ul class="nav__list" *ngFor="let menu_nav of navMenu">
+    <ul class="nav__list" *ngFor="let menu_nav of navMenu; let indice = index">
         <ng-container *ngIf="menu_nav.typeNavMenu == 'UN'">
-            <li class="list__item">
+            <li class="list__item single">
                 <div class="list__button">
                     <i class="{{menu_nav.icoNavMenu}} list__img" ></i>
                     <a href="#" class="nav__link">{{menu_nav.nameSubNavMenu}}</a>
@@ -15,14 +15,14 @@
             </li>
         </ng-container>
         <ng-container *ngIf="menu_nav.typeNavMenu == 'LI'">
-            <li class="list__item">
-                <div #buttonOptions (click)="toogleMenu($event, menu_nav.idNavMenu)" class="list__button">
+            <li class="list__item multiple" (click)="toogleMenu(menu_nav.idNavMenu)">
+                <div class="list__button">
                     <i class="{{menu_nav.icoNavMenu}} list__img" ></i>
                     <a href="#" class="nav__link">{{menu_nav.nameSubNavMenu}}</a>
-                    <i class="fa-solid fa-chevron-right list__arrow" [ngClass]="{'rotate_arrow':  idMenuActive == menu_nav.idNavMenu}"></i>
+                    <i class="fa-solid fa-chevron-right list__arrow" [ngClass]="{'rotate_arrow':  idMenusOpened.indexOf(menu_nav.idNavMenu) !== -1}"></i>
                 </div>
 
-                <ul class="list__show">
+                <ul #selectSubNavMenu [id]="menu_nav.idNavMenu" class="list__show">
                     <li *ngFor="let submenu_nav of menu_nav.subNavmenu">
                         <a href="" class="nav__link nav__link--inside">{{submenu_nav.nameSubNavMenu}}</a>
                     </li>
