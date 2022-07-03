@@ -21,6 +21,7 @@ type MenuNav = {
 export class SideMenuComponent implements OnInit {
   @ViewChildren('selectSubNavMenu') selectSubNavMenu !: QueryList<ElementRef>;
   idMenuActive?: number;
+  idSubmenuActive?: number;
   idMenusOpened: number[] = [];
 
   navMenu: MenuNav[] = [
@@ -69,17 +70,17 @@ export class SideMenuComponent implements OnInit {
       icoNavMenu: 'fa-regular fa-bell'
     },
     {
-      idNavMenu: 5,
+      idNavMenu: 6,
       nameSubNavMenu: 'Nuevo Clientes',
       typeNavMenu: 'LI',
       icoNavMenu: 'fa-regular fa-envelope',
       subNavmenu: [
-        { idSubNavMenu: 5, nameSubNavMenu: 'Simulador de Cronogramas Pagos', icoSubNavMenu: 'fa-solid fa-house' },
-        { idSubNavMenu: 6, nameSubNavMenu: 'Opcion 200', icoSubNavMenu: 'fa-solid fa-house' },
-        { idSubNavMenu: 7, nameSubNavMenu: 'Opcion 300', icoSubNavMenu: 'fa-solid fa-house' },
-        { idSubNavMenu: 8, nameSubNavMenu: 'Opcion 400', icoSubNavMenu: 'fa-solid fa-house' },
-        { idSubNavMenu: 9, nameSubNavMenu: 'Opcion 500', icoSubNavMenu: 'fa-solid fa-house' },
-        { idSubNavMenu: 10, nameSubNavMenu: 'Opcion 600', icoSubNavMenu: 'fa-solid fa-house' }
+        { idSubNavMenu: 11, nameSubNavMenu: 'Simulador de Cronogramas Pagos', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 12, nameSubNavMenu: 'Opcion 200', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 13, nameSubNavMenu: 'Opcion 300', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 14, nameSubNavMenu: 'Opcion 400', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 15, nameSubNavMenu: 'Opcion 500', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 16, nameSubNavMenu: 'Opcion 600', icoSubNavMenu: 'fa-solid fa-house' }
       ]!
     }
   ];
@@ -90,33 +91,38 @@ export class SideMenuComponent implements OnInit {
   }
 
   toogleMenu(id_menu_Active: number) {
-    let allMenu = this.selectSubNavMenu.toArray(); //Capturamos todos los Submenus
-
-    if (this.idMenuActive == id_menu_Active) {
-      this.idMenuActive = undefined; // Borramos el ID Activo para que le sea retirada la clase rotacion flecha
-    } else {
-      this.idMenuActive = id_menu_Active; // Asignamos el ID como Activo
-    };
+    let allSubMenu = this.selectSubNavMenu.toArray(); //Capturamos todos los Submenus
     
-    allMenu.forEach((rs: ElementRef) => {
+    // Recorremos todos los SubMenus
+    allSubMenu.forEach((rs: ElementRef) => {
       let idMenu    = parseFloat(rs.nativeElement.id);      // ID del Menu
       let heightMax = rs.nativeElement.scrollHeight + 'px'; // Alto Minimo para mostrar el HTML
 
       if (idMenu == id_menu_Active) {
-
         if (this.idMenusOpened.includes(idMenu)) { // Existe ID Menu Abierto
-          this.renderer.setStyle(rs.nativeElement, 'height', '0px'); // Ocultamos Menu
           this.idMenusOpened = this.idMenusOpened.filter(x => x != idMenu); // Removemos ID Menu
+          this.renderer.setStyle(rs.nativeElement, 'height', '0px'); // Ocultamos Menu
         } else {
-          this.renderer.setStyle(rs.nativeElement, 'height', heightMax); // Mostramos Menu
           this.idMenusOpened.push(idMenu); // Añadimos ID Menu
+          this.renderer.setStyle(rs.nativeElement, 'height', heightMax); // Mostramos Menu
         }
+      } else {
+        this.renderer.setStyle(rs.nativeElement, 'height', '0px'); // Ocultamos Menu
+        this.idMenusOpened = this.idMenusOpened.filter(x => x != idMenu); // Removemos ID Menu
       }
     });
+
+    //console.log("MENUS ABIERTOS:",  this.idMenusOpened)
   }
 
+  menuActive(id_menu_active: number){
+    this.idMenuActive = id_menu_active; // Asignamos el ID como Activo
+    this.toogleMenu(id_menu_active);
+  };
 
-
+  subMenuActive(id_submenu_active: number){
+    this.idSubmenuActive = id_submenu_active; // Asignamos el ID como Activo
+  };
 
 
 }
