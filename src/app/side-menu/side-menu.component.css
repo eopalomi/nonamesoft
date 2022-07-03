@@ -44,9 +44,9 @@
 
 /*Clases para usar al mover el Side Menu*/
 .menu__side_move {
-    /* width: 240px; */
     width: 0px;
 }
+
 
 /***** Estilo para los enlaces del menu *****/
 .nav__list {
@@ -54,8 +54,6 @@
     flex-direction: column;
     width: 100%;
     font-weight: 100;
-    /* padding-left: 15px; */
-    /* background: rgb(233, 171, 78); */
 }
 
 .list__item {
@@ -64,16 +62,17 @@
     cursor: pointer;
     overflow: hidden;
     text-align: center;
-    /* background: lightgreen;    */
 }
 
 .list__item.single:hover  {
     background: #28282b;
 }
 
-/* .list__item.multiple:hover  {
+
+.list__item.multiple > :not(ul):hover  {
     background: #28282b;
-} */
+}
+
 
 .list__img {
     color: #afadaf;
@@ -87,8 +86,6 @@
     margin: 0 auto;
     align-items: center;
     padding: 0px 24px;
-
-    /* background: lightslategray; */
 }
 
 .list__button a{
@@ -105,13 +102,13 @@
 .list__show{
     width: 75%;
     margin: 0 auto;
-    /* border-left: 2px solid white; */
     list-style: none;
-    transition: height .4s;
-    
     height: 0;
+    transition: height .4s;
+}
 
-    /* background: lightcoral; */
+.list__show a:hover {
+    color: white;
 }
 
 .nav__link--inside {
@@ -124,16 +121,10 @@
     font-weight: 100;
 }
 
-.list__show li:hover {
-    background: #424345;
-}
-
 .list__arrow{
     margin-left: auto;
     transition: transform .3s;
 }
-
-
 
 /********************* CLASE PARA ROTAR LA FLECHA DEL MENU *********************/
 .rotate_arrow{

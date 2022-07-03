@@ -55,7 +55,7 @@ export class SideMenuComponent implements OnInit {
       typeNavMenu: 'LI',
       icoNavMenu: 'fa-regular fa-file-lines',
       subNavmenu: [
-        { idSubNavMenu: 5, nameSubNavMenu: 'Simulador de Cronogramas Pagos', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 5, nameSubNavMenu: 'Simulador de Cronogramas', icoSubNavMenu: 'fa-solid fa-house' },
         { idSubNavMenu: 6, nameSubNavMenu: 'Opcion 200', icoSubNavMenu: 'fa-solid fa-house' },
         { idSubNavMenu: 7, nameSubNavMenu: 'Opcion 300', icoSubNavMenu: 'fa-solid fa-house' },
         { idSubNavMenu: 8, nameSubNavMenu: 'Opcion 400', icoSubNavMenu: 'fa-solid fa-house' },
@@ -75,7 +75,7 @@ export class SideMenuComponent implements OnInit {
       typeNavMenu: 'LI',
       icoNavMenu: 'fa-regular fa-envelope',
       subNavmenu: [
-        { idSubNavMenu: 11, nameSubNavMenu: 'Simulador de Cronogramas Pagos', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 11, nameSubNavMenu: 'Simulador de Cronogramas', icoSubNavMenu: 'fa-solid fa-house' },
         { idSubNavMenu: 12, nameSubNavMenu: 'Opcion 200', icoSubNavMenu: 'fa-solid fa-house' },
         { idSubNavMenu: 13, nameSubNavMenu: 'Opcion 300', icoSubNavMenu: 'fa-solid fa-house' },
         { idSubNavMenu: 14, nameSubNavMenu: 'Opcion 400', icoSubNavMenu: 'fa-solid fa-house' },
