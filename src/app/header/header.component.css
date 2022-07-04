@@ -6,20 +6,24 @@ header {
     position: fixed;
     top: 0;
     z-index: 500;
-    background: green;
+    /* background: green; */
+    background: #ffffff;
+    box-shadow: 0 1px 3px -2px gray;
 }
 
 .icon__menu {
-    width: 50px;
+    /* width: 150px; */
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #555b6d;
+    padding: 0px 15px;
     transform: translateX(10px);
 }
 
 .icon__menu i {
-    font-size: 20px;
+    font-size: 16px;
     cursor: pointer;
     position: absolute;
 }

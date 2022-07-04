@@ -71,7 +71,7 @@ export class SideMenuComponent implements OnInit {
     },
     {
       idNavMenu: 6,
-      nameSubNavMenu: 'Nuevo Clientes',
+      nameSubNavMenu: 'Nuevos Clientes',
       typeNavMenu: 'LI',
       icoNavMenu: 'fa-regular fa-envelope',
       subNavmenu: [
@@ -81,6 +81,34 @@ export class SideMenuComponent implements OnInit {
         { idSubNavMenu: 14, nameSubNavMenu: 'Opcion 400', icoSubNavMenu: 'fa-solid fa-house' },
         { idSubNavMenu: 15, nameSubNavMenu: 'Opcion 500', icoSubNavMenu: 'fa-solid fa-house' },
         { idSubNavMenu: 16, nameSubNavMenu: 'Opcion 600', icoSubNavMenu: 'fa-solid fa-house' }
+      ]!
+    },
+    {
+      idNavMenu: 7,
+      nameSubNavMenu: 'Nuevos Proveedores',
+      typeNavMenu: 'LI',
+      icoNavMenu: 'fa-regular fa-envelope',
+      subNavmenu: [
+        { idSubNavMenu: 17, nameSubNavMenu: 'Simulador de Cronogramas', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 18, nameSubNavMenu: 'Opcion 200', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 19, nameSubNavMenu: 'Opcion 300', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 20, nameSubNavMenu: 'Opcion 400', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 21, nameSubNavMenu: 'Opcion 500', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 22, nameSubNavMenu: 'Opcion 600', icoSubNavMenu: 'fa-solid fa-house' }
+      ]!
+    },
+    {
+      idNavMenu: 8,
+      nameSubNavMenu: 'Nuevos Usuarios',
+      typeNavMenu: 'LI',
+      icoNavMenu: 'fa-regular fa-envelope',
+      subNavmenu: [
+        { idSubNavMenu: 18, nameSubNavMenu: 'Simulador de Cronogramas', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 19, nameSubNavMenu: 'Opcion 200', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 20, nameSubNavMenu: 'Opcion 300', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 21, nameSubNavMenu: 'Opcion 400', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 22, nameSubNavMenu: 'Opcion 500', icoSubNavMenu: 'fa-solid fa-house' },
+        { idSubNavMenu: 23, nameSubNavMenu: 'Opcion 600', icoSubNavMenu: 'fa-solid fa-house' }
       ]!
     }
   ];
