@@ -35,6 +35,8 @@
 
 .name__page i {
     margin-right: 5px;
+    color: lightcoral;
+    font-size: 20px;
 }
 
 /***** Clases para usar al mover el Side Menu *****/
