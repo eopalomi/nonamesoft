@@ -1,17 +1,12 @@
 header {
     width: calc(100% - 240px);
-    /* min-width: 100%; */
     height: 72px;
     display: flex;
     align-items: center;
     position: fixed;
-    
     top: 0;
-    /* left: 240px; */
     right:0;
-    
     z-index: 500;
-    /* background: green; */
     background: #ffffff;
     box-shadow: 0 1px 3px -2px gray;
     justify-content: space-between;
@@ -19,7 +14,6 @@ header {
 }
 
 .icon__menu {
-    /* width: 150px; */
     height: 100%;
     display: flex;
     justify-content: center;
