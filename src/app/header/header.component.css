@@ -34,6 +34,16 @@ header {
     top: 0;
 }
 
+
+/***************** ESTILO PARA EL BOTON DE PERFIL***************/
+
+.perfil__slide {
+    /* background:red; */
+    font-family: 'Poppins', sans-serif;
+    background: lightcoral;
+    position: relative;
+}
+
 .perfil_circle {
     border-radius: 50%;
     background-color: #b36bd4;
@@ -47,5 +57,43 @@ header {
     font-size: 14px;
     margin: 0 10px;
     cursor: pointer;
+}
+
+.menu_profile{
+    background: gray;
+    position: absolute;
+    width: 200px;
+    top: 50px;
+    right: 5px;
+    border-radius: 15px;
+}
+
+ 
+.menu_profile h3{
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px 0px;
+    font-weight: 500;
+    color: #555;
+    line-height: 1.2em;
+}
+
+
+.menu_profile h3 span{
+    font-size: 14px;
+    color: #cecece;
+    font-weight: 400;
+}
+
+.perfil__slide .menu_profile::before{
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+    background: gray;
+    transform: rotate(45deg);
 }
 
