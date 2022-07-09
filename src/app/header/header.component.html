@@ -3,19 +3,38 @@
         <i class="fas fa-bars" id="btn_menu" (click)="openCloseSideMenu()"></i>
     </div>
     <div class="perfil__slide">
-        <div class="perfil_circle">EP</div>
+        <div class="perfil_circle" (click)="perfilButton()">EP</div>
         <!-- <button>YO</button> -->
         <!-- <i class="fa-solid fa-chevron-right list__arrow"></i> -->
-        <div class="menu_profile">
+        <div id="menu_profile" class="menu__profile">
             <h3>Erick Palomino<br><span>Diseñador de Sistemas</span></h3>
             
             <ul>
-                <li><i class="fa-solid fa-user"><a>Perfil</a></i></li>
-                <li><i class="fa-solid fa-user"><a>Edit Profile</a></i></li>
-                <li><i class="fa-solid fa-user"></i><a>Inbox</a></li>
-                <li><i class="fa-solid fa-user"></i><a>Settings</a></li>
-                <li><i class="fa-solid fa-user"></i><a>Help</a></li>
-                <li><i class="fa-solid fa-user"></i><a>Logout</a></li>
+                <li>
+                    <i class="fa-regular fa-user"></i>
+                    <a href="#">Perfil</a>
+                </li>
+                <li>
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    <a href="#">Edit Profile</a>
+                </li>
+                <li>
+                    <i class="fa-regular fa-envelope"></i>
+                    <a href="#">Inbox</a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-gear"></i>
+                    <a href="#">Settings</a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-circle-question"></i>
+                    <a href="#">Help</a>
+                </li>
+                <div class="divider"></div>
+                <li class="logout">
+                    <i class="fa-solid fa-power-off"></i>
+                    <a href="#">Logout</a>
+                </li>
             </ul>
 
         </div>
